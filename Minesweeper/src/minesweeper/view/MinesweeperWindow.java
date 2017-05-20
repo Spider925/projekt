@@ -41,7 +41,6 @@ public class MinesweeperWindow extends JFrame
         add(GamePanel(), BorderLayout.SOUTH);
         
         timer = new Timer(1000,this);
-        TimerStart();
         
         setVisible(true);
     }
@@ -127,7 +126,13 @@ public class MinesweeperWindow extends JFrame
             UpdateTime();
         }
         if(e.getSource() == restart) {
-            InitMinesLeft(60);
+            /*
+            ******************************************
+            TODO
+            ******************************************
+            */
+            InitMinesLeft(60); // Függvénnyel lekérdezni az aktuális nehézséghez tartozó akna számokat!!!
+            this.Time.setText("0");
         }
     }
 }
