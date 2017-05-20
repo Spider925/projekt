@@ -68,4 +68,7 @@ public class Table{
         
         return found;
     }
+    
+    public void foo(){
+        System.out.println("foo");
 }

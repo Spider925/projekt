@@ -12,7 +12,7 @@ public class Logic {
     }
     
     public String getMinesCountAround(int a,int b){
-        int c;
+        int c = 0;
         
         for(int i=a-1;i<=a+1;i++) for(int j=b-1;j<=+1;j++){
             if( i == a && j == b ) continue;
@@ -20,6 +20,6 @@ public class Logic {
             
         }
         
-        return Integer.
+        return Integer.toString(c);
     }
 }
