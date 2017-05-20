@@ -10,5 +10,9 @@ package minesweeper.logic.field;
  * @author sanapci
  */
 public abstract class Field {
+    private boolean isClicked = false;
+    
     public abstract boolean isMine();
+    public void click(){ isClicked = true; }
+    public boolean isClicked(){ return isClicked; }
 }

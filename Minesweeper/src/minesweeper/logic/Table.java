@@ -12,9 +12,6 @@ import java.util.Random;
 public class Table{
     private int x,y,c;
     private Field field[][];
-    
-    class Position{ int x,y; Position(int x,int y){ this.x = x; this.y = y; } 
-                    public boolean compareTo(Position o){ return (o.x == x && o.y == y);} }
     private Position mines[];
     
     public Table(){}
@@ -71,7 +68,7 @@ public class Table{
         return found;
     }
     
-    public Field getField(int a,int b){
-        return field[a][b];
-    }
+    public Field getField(int a,int b){ return field[a][b]; }
+    Position getSize(){ return new Position(x,y); }
+    public int getBombsNum(){ return c; }
 }
