@@ -19,8 +19,11 @@ public class Logic {
         String result;
         
         if( table.getField(a,b).isMine() ) result = "-1";
-        else if( checkWin() ) result = Integer.toString(getMinesCountAround(a,b));
-        else result = "won";
+        else if( checkWin() ) result = "won";
+        else{
+            result = Integer.toString(getMinesCountAround(a,b));
+            table.getField(a, b).click();
+        }
         
         return result;
     }
