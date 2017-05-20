@@ -15,6 +15,7 @@ public class Table{
                     public boolean compareTo(Position o){ return (o.x == x && o.y == y);} }
     private Position mines[];
     
+    public Table(){}
     public Table(int x, int y, int c){
         newTable(x,y,c);
     }
@@ -50,7 +51,8 @@ public class Table{
         generateMines();
         
         for(int i=0;i<x;i++) for(int j=0;j<y;j++){
-            if( isMine(i,j) ) field[i][j] = Mine();
+            if( isMine(i,j) ) field[i][j] = new Mine();
+            else field[i][j] = new Empty();
         }
     }
     
