@@ -1,4 +1,4 @@
-package logic.field;
+package minesweeper.logic.field;
 
 /**
  *

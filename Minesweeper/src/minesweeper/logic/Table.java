@@ -1,7 +1,9 @@
-package logic;
+package minesweeper.logic;
 
+import minesweeper.logic.field.Field;
+import minesweeper.logic.field.Mine;
+import minesweeper.logic.field.Empty;
 import java.util.Random;
-import logic.field.*;
 
 /**
  *
