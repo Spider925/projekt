@@ -9,7 +9,7 @@ package minesweeper;
  *
  * @author:
  * Kardos Gergo - FM7AUC
- * Kilyan Attila - KFWVL9
+ * Kilyen Attila - JGWVK9
  * Elek David - DEG8I6
  */
 public class Minesweeper {
