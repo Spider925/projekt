@@ -69,6 +69,7 @@ public class Table{
         return found;
     }
     
-    public void foo(){
-        System.out.println("foo");
+    public Field getField(int a,int b){
+        return field[a][b];
+    }
 }

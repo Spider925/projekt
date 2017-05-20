@@ -17,7 +17,7 @@ public class Logic {
         for(int i=a-1;i<=a+1;i++) for(int j=b-1;j<=+1;j++){
             if( i == a && j == b ) continue;
             
-            
+            if( table.getField(i,j).isMine() ) c++;
         }
         
         return Integer.toString(c);
