@@ -7,7 +7,10 @@ package minesweeper;
 
 /**
  *
- * @author sanapci
+ * @author:
+ * Kardos Gergo - FM7AUC
+ * Kilyan Attila - KFWVL9
+ * Elek David - DEG8I6
  */
 public class Minesweeper {
 
