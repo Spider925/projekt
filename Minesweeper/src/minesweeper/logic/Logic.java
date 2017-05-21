@@ -58,4 +58,6 @@ public class Logic {
         
         return c;
     }
+    
+    public int getMinesCount(){ return table.getBombsNum(); }
 }

@@ -2,17 +2,16 @@ package minesweeper.view;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
+import minesweeper.logic.Logic;
 
 
 /**
  * @author
  * 
  */
-public class MinesweeperWindow extends JFrame
-                                implements ActionListener{
+public class MinesweeperWindow extends JFrame implements ActionListener{
    
     // Menu elemek
     private JMenuBar menu;
@@ -21,9 +20,17 @@ public class MinesweeperWindow extends JFrame
     private JButton restart;
     
     private JLabel MinesLeft,Time;
-    private Timer timer;
+    private final Timer timer;
     
-    public MinesweeperWindow(){
+    private final Logic logic;
+    private final AbstractAction restartGame = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            }
+        };
+    
+    public MinesweeperWindow(Logic logic){
+        this.logic = logic;
         
         // Az ablak beallitasai
         setTitle("Aknakereső");
@@ -49,6 +56,7 @@ public class MinesweeperWindow extends JFrame
         menu = new JMenuBar();
         
         newgame = new JMenu("Új Játék");
+        newgame.addActionListener(this);
         highscores = new JMenu("Top lista");
         help = new JMenu("Segítség");
         
@@ -63,7 +71,7 @@ public class MinesweeperWindow extends JFrame
     {
         JPanel infopanel = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
         
-        MinesLeft = new JLabel("NUM");
+        MinesLeft = new JLabel("    ");
         MinesLeft.setFont(new Font("Serif", Font.BOLD, 30));
         MinesLeft.setForeground(Color.red);
         
@@ -131,7 +139,8 @@ public class MinesweeperWindow extends JFrame
             TODO
             ******************************************
             */
-            InitMinesLeft(60); // Függvénnyel lekérdezni az aktuális nehézséghez tartozó akna számokat!!!
+            logic.startGame(10, 10, 10);
+            InitMinesLeft(logic.getMinesCount()); // Függvénnyel lekérdezni az aktuális nehézséghez tartozó akna számokat!!!
             this.Time.setText("0");
         }
     }

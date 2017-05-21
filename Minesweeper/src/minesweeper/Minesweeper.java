@@ -1,9 +1,7 @@
 package minesweeper;
 
 
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.JOptionPane;
+import minesweeper.logic.Logic;
 
 import minesweeper.view.MinesweeperWindow;
 
@@ -27,7 +25,7 @@ public class Minesweeper{
     }
     
     void run(){
-        MainWin = new MinesweeperWindow();
+        MainWin = new MinesweeperWindow(new Logic());
     }
     
     
