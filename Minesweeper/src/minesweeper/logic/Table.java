@@ -28,11 +28,11 @@ public class Table{
         Random rand = new Random();
         
         for(int i=0;i<c;i++){
-            int a = rand.nextInt(x),b = rand.nextInt(y);
-            boolean found = false;
+            boolean found;
             
             do{
-                mines[i] = new Position(a,b);
+                found = false;
+                mines[i] = new Position(rand.nextInt(x),rand.nextInt(y));
                 
                 int j = 0;
                 while( !found && j<i){
@@ -48,6 +48,7 @@ public class Table{
         this.y = y;
         this.c = c;
         generateMines();
+        field = new Field[x][y];
         
         for(int i=0;i<x;i++) for(int j=0;j<y;j++){
             if( isMine(i,j) ) field[i][j] = new Mine();
