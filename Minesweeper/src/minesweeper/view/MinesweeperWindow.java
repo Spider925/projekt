@@ -142,6 +142,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
             logic.startGame(10, 10, 10);
             InitMinesLeft(logic.getMinesCount()); // Függvénnyel lekérdezni az aktuális nehézséghez tartozó akna számokat!!!
             this.Time.setText("0");
+            timer.start();
         }
     }
 }
