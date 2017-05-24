@@ -21,7 +21,8 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
     private final Timer timer;
     
     private final Logic logic;
-    private final GameField gamefield;
+    private GameField gamefield;
+    private int x,y,c;
     private final AbstractAction restartGame = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -113,16 +114,16 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         return gamepanel;
     }
     
-    public void InitMinesLeft (int MineNumber) {
+    private void InitMinesLeft (int MineNumber) {
         this.MinesLeft.setText(Integer.toString(MineNumber));
     }
     
-    public void MinesLeftDecrease () {
+    private void MinesLeftDecrease () {
         int current = Integer.parseInt(this.MinesLeft.getText());
         this.MinesLeft.setText(Integer.toString(current-1));
     }
     
-    public void MinesLeftIncrease () {
+    private void MinesLeftIncrease () {
         int current = Integer.parseInt(this.MinesLeft.getText());
         this.MinesLeft.setText(Integer.toString(current+1));
     }
@@ -152,7 +153,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
             TODO
             ******************************************
             */
-            logic.startGame(10, 10, 10);
+            logic.startGame(x,y,c);
             InitMinesLeft(logic.getMinesCount()); // Függvénnyel lekérdezni az aktuális nehézséghez tartozó akna számokat!!!
             this.Time.setText("0");
             timer.start();
