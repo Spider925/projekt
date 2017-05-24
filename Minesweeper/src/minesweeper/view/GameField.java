@@ -12,11 +12,11 @@ public final class GameField extends JPanel {
 
     private JButton[][] buttons;
 
-    public GameField(int x, int y, int bomb){
-        setPanel(x,y,bomb);
+    public GameField(int x, int y){
+        setPanel(x,y);
     }
     
-    public void setPanel(int x,int y,int bomb){
+    public void setPanel(int x,int y){
         this.buttons = new JButton[x][y];
         this.removeAll();
         setPanelProperties(x, y);

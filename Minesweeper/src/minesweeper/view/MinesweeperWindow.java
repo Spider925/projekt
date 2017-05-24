@@ -45,7 +45,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         // Panel és megjelenítés
         setLayout(new BorderLayout());
         add(InfoPanel(), BorderLayout.NORTH);
-        gamefield = new GameField(1,0,0);
+        gamefield = new GameField(1,0);
         add(gamefield, BorderLayout.CENTER);
         
         timer = new Timer(1000,this);
@@ -140,7 +140,14 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         int current = Integer.parseInt(this.Time.getText());
         this.Time.setText(Integer.toString(current+1));
     }
-        
+    
+    public void newGame(int x,int y,int c){
+        this.x = x; this.y = y; this.c = c;
+        logic.startGame(x,y,c);
+        gamefield.setPanel(x,y);
+        InitMinesLeft(c);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -153,8 +160,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
             TODO
             ******************************************
             */
-            logic.startGame(x,y,c);
-            InitMinesLeft(logic.getMinesCount()); // Függvénnyel lekérdezni az aktuális nehézséghez tartozó akna számokat!!!
+            this.newGame(x,y,c);
             this.Time.setText("0");
             timer.start();
         }
