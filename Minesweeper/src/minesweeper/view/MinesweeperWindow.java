@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.Timer;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import minesweeper.logic.Logic;
 
 
@@ -11,7 +13,7 @@ import minesweeper.logic.Logic;
  * @author
  * 
  */
-public class MinesweeperWindow extends JFrame implements ActionListener{
+public class MinesweeperWindow extends JFrame implements ActionListener, MenuListener{
    
     // Menu elemek
     private JMenuBar menu;
@@ -56,9 +58,11 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         menu = new JMenuBar();
         
         newgame = new JMenu("Új Játék");
-        newgame.addActionListener(this);
+        newgame.addMenuListener(this);
         highscores = new JMenu("Top lista");
+        highscores.addMenuListener(this);
         help = new JMenu("Segítség");
+        help.addMenuListener(this);
         
         menu.add(newgame);
         menu.add(highscores);
@@ -69,8 +73,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
     
     private JPanel InfoPanel()
     {
-        JPanel infopanel = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
-        
+        JPanel infopanel = new JPanel(new FlowLayout(FlowLayout.CENTER,50,0));
         MinesLeft = new JLabel("    ");
         MinesLeft.setFont(new Font("Serif", Font.BOLD, 30));
         MinesLeft.setForeground(Color.red);
@@ -127,6 +130,24 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         int current = Integer.parseInt(this.Time.getText());
         this.Time.setText(Integer.toString(current+1));
     }
+    
+    @Override
+    public void menuSelected(MenuEvent e) {
+        if(e.getSource() == newgame) {
+            new SettingsWindow().setVisible(true);
+        }
+    }
+    // Ezek itt kellenek a menulistenerhez...
+    @Override
+    public void menuCanceled(MenuEvent e) {
+        
+    }    
+    @Override
+    public void menuDeselected(MenuEvent e) {
+        
+    }
+    // Ne töröld ki
+    // Kardos
     
     @Override
     public void actionPerformed(ActionEvent e) {
