@@ -25,6 +25,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener, MenuLis
     private final Timer timer;
     
     private final Logic logic;
+    private final GameField gamefield;
     private final AbstractAction restartGame = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -36,7 +37,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener, MenuLis
         
         // Az ablak beallitasai
         setTitle("Aknakereső");
-        setSize(1024,768);
+        setSize(800,600);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -47,7 +48,8 @@ public class MinesweeperWindow extends JFrame implements ActionListener, MenuLis
         // Panel és megjelenítés
         setLayout(new BorderLayout());
         add(InfoPanel(), BorderLayout.NORTH);
-        add(GamePanel(), BorderLayout.SOUTH);
+        gamefield = new GameField(1,0,0);
+        add(gamefield, BorderLayout.CENTER);
         
         timer = new Timer(1000,this);
         
