@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.Timer;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import minesweeper.logic.Logic;
 
 
@@ -13,13 +11,11 @@ import minesweeper.logic.Logic;
  * @author
  * 
  */
-public class MinesweeperWindow extends JFrame implements ActionListener, MenuListener{
+public class MinesweeperWindow extends JFrame implements ActionListener{
    
     // Menu elemek
     private JMenuBar menu;
-    private JMenu newgame,highscores,help;    
-    
-    private JButton restart;
+    private JMenuItem easy,normal,hard;
     
     private JLabel MinesLeft,Time;
     private final Timer timer;
@@ -59,12 +55,22 @@ public class MinesweeperWindow extends JFrame implements ActionListener, MenuLis
     private JMenuBar menu() {
         menu = new JMenuBar();
         
-        newgame = new JMenu("Új Játék");
-        newgame.addMenuListener(this);
-        highscores = new JMenu("Top lista");
-        highscores.addMenuListener(this);
-        help = new JMenu("Segítség");
-        help.addMenuListener(this);
+        JMenu newgame = new JMenu("Új Játék");
+        
+        easy = new JMenuItem("Könnyű");
+        normal = new JMenuItem("Közepes");
+        hard = new JMenuItem("Nehéz");
+        
+        easy.addActionListener(this);
+        normal.addActionListener(this);
+        hard.addActionListener(this);
+        
+        newgame.add(easy);
+        newgame.add(normal);
+        newgame.add(hard);
+        
+        JMenu highscores = new JMenu("Top lista");
+        JMenu help = new JMenu("Segítség");
         
         menu.add(newgame);
         menu.add(highscores);
@@ -86,7 +92,8 @@ public class MinesweeperWindow extends JFrame implements ActionListener, MenuLis
         infopanel.add(MinesLeft);
         infopanel.add(MinesLeftInfo);
         
-        restart = new JButton("Restart");
+        JButton restart = new JButton("Restart");
+        restart.setActionCommand("restart");
         restart.addActionListener(this);
         
         infopanel.add(restart);
@@ -132,31 +139,14 @@ public class MinesweeperWindow extends JFrame implements ActionListener, MenuLis
         int current = Integer.parseInt(this.Time.getText());
         this.Time.setText(Integer.toString(current+1));
     }
-    
-    @Override
-    public void menuSelected(MenuEvent e) {
-        if(e.getSource() == newgame) {
-            new SettingsWindow().setVisible(true);
-        }
-    }
-    // Ezek itt kellenek a menulistenerhez...
-    @Override
-    public void menuCanceled(MenuEvent e) {
         
-    }    
-    @Override
-    public void menuDeselected(MenuEvent e) {
-        
-    }
-    // Ne töröld ki
-    // Kardos
-    
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         if(e.getSource() == timer){
             UpdateTime();
         }
-        if(e.getSource() == restart) {
+        if(e.getActionCommand().equals("restart")) {
             /*
             ******************************************
             TODO
