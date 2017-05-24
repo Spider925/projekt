@@ -4,6 +4,7 @@ package minesweeper;
 import minesweeper.logic.Logic;
 
 import minesweeper.view.MinesweeperWindow;
+import minesweeper.view.SettingsWindow;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Minesweeper{
      * @param args the command line arguments
      */
     MinesweeperWindow MainWin;
+    SettingsWindow SettingsWin;
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -26,6 +28,8 @@ public class Minesweeper{
     
     void run(){
         MainWin = new MinesweeperWindow(new Logic());
+        SettingsWin = new SettingsWindow();
+        
     }
     
     
