@@ -154,6 +154,23 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == easy) {
+            this.newGame(10, 10, 10);
+            Time.setText("0");
+            timer.start();
+        }
+        
+        if(e.getSource() == normal) {
+            this.newGame(15, 15, 50);
+            Time.setText("0");
+            timer.start();
+        }
+        
+        if(e.getSource() == hard) {
+            this.newGame(20, 20, 100);
+            Time.setText("0");
+            timer.start();
+        }
         
         if(e.getSource() == timer){
             UpdateTime();

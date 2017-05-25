@@ -34,6 +34,6 @@ public final class GameField extends JPanel {
     private void setPanelProperties(int x, int y) {
         this.setVisible(true);
         this.setLayout(new GridLayout(x, y));
-        this.setSize(x * 20 + 25, y * 20 + 25);
+        //this.setSize(x * 20 + 25, y * 20 + 25);
     }
 }
