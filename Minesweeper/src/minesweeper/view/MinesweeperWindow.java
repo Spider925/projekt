@@ -98,7 +98,6 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         infopanel.add(MinesLeftInfo);
         
         JButton restart = new JButton("Restart");
-        //restart.setActionCommand("restart");
         restart.addActionListener(restartGame);
         
         infopanel.add(restart);
@@ -175,10 +174,5 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         if(e.getSource() == timer){
             UpdateTime();
         }
-        /*if(e.getActionCommand().equals("restart")){
-            this.newGame(x,y,c);
-            this.Time.setText("0");
-            timer.start();
-        }*/
     }
 }
