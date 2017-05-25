@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import minesweeper.logic.Logic;
 
 /**
- *
- * @author yakno
+ * A játék felület megvalósításáért felelős. 
+ * @author Kilyén Attila
  */
 public final class GameField extends JPanel {
 
@@ -23,7 +23,11 @@ public final class GameField extends JPanel {
         this.logic = logic;
         setPanel(x,y);
     }
-    
+    /**
+     * A paraméterként kapott értékek alapján létrehozza a játékmezőt
+     * @param x sorok száma
+     * @param y oszlopok száma
+     */
     public void setPanel(int x,int y){
         this.buttons = new JButton[x][y];
         this.removeAll();
