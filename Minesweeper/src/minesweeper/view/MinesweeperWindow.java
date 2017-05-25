@@ -21,11 +21,14 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
     private final Timer timer;
     
     private final Logic logic;
-    private GameField gamefield;
+    private final GameField gamefield;
     private int x,y,c;
     private final AbstractAction restartGame = new AbstractAction() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void actionPerformed(ActionEvent ae){
+                newGame(x,y,c);
+                Time.setText("0");
+                timer.start();
             }
         };
     
@@ -95,8 +98,8 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         infopanel.add(MinesLeftInfo);
         
         JButton restart = new JButton("Restart");
-        restart.setActionCommand("restart");
-        restart.addActionListener(this);
+        //restart.setActionCommand("restart");
+        restart.addActionListener(restartGame);
         
         infopanel.add(restart);
 
@@ -155,15 +158,10 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         if(e.getSource() == timer){
             UpdateTime();
         }
-        if(e.getActionCommand().equals("restart")) {
-            /*
-            ******************************************
-            TODO
-            ******************************************
-            */
+        /*if(e.getActionCommand().equals("restart")){
             this.newGame(x,y,c);
             this.Time.setText("0");
             timer.start();
-        }
+        }*/
     }
 }
