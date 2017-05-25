@@ -6,17 +6,13 @@ import minesweeper.logic.Logic;
 import minesweeper.view.MinesweeperWindow;
 
 /**
- *
- * @author:
- * Kardos Gergo - FM7AUC
- * Kilyen Attila - JGWVK9
- * Elek David - DEG8I6
+ * @author Kardos Gergo - FM7AUC
+ * @author Elek David - DEG8I6
+ * @author Kilyen Attila - JGWVK9 
  */
 public class Minesweeper{
 
-    /**
-     * @param args the command line arguments
-     */
+
     MinesweeperWindow MainWin;
     
     public static void main(String[] args) {
