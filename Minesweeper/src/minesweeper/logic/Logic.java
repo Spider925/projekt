@@ -18,18 +18,16 @@ public class Logic {
     public String clickAction(int a,int b){
         String result;
         
-        if( table.getField(a,b).isMine() ) result = "-1";
+        if( table.getField(a,b).isMine() ) return "PUK";
         else{
             result = Integer.toString(getMinesCountAround(a,b));
             table.getField(a, b).click();
         }
         
-        if( checkWin() ) result = "won";
-        
         return result;
     }
     
-    private boolean checkWin(){
+    public boolean checkWin(){
         int bc = 0;
         Position size = table.getSize();
         
