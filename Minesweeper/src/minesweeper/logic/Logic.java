@@ -1,5 +1,7 @@
 package minesweeper.logic;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sanapci
@@ -18,7 +20,11 @@ public class Logic {
     public String clickAction(int a,int b){
         String result;
         
-        if( table.getField(a,b).isMine() ) return "PUK";
+        if( table.getField(a,b).isMine() ) {
+            //JOptionPane.showMessageDialog(null, "Vesztettél!");
+            
+            return "PUK";            
+        }
         else{
             result = Integer.toString(getMinesCountAround(a,b));
             table.getField(a, b).click();
