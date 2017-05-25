@@ -8,8 +8,13 @@ import minesweeper.logic.Logic;
 
 
 /**
- * @author
- * 
+ * @author Kardos Gergő
+ * @author Elek Dávid
+ */
+
+/**
+ * Ez az osztály valósítja meg a felhasználói felületet. 
+ * @author Kardos Gergő
  */
 public class MinesweeperWindow extends JFrame implements ActionListener{
    
@@ -23,6 +28,9 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
     private final Logic logic;
     private final GameField gamefield;
     private int x,y,c;
+    /**
+     * Újra indítja a játékot ugyanazon a nehézségi fokozaton
+     */
     private final AbstractAction restartGame = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent ae){
@@ -31,7 +39,9 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
                 timer.start();
             }
         };
-    
+    /**
+     * Az ablak beállítása, menü sáv, játékmező, számlálók, újra indítás gomb elhelyezése
+     */
     public MinesweeperWindow(Logic logic){
         this.logic = logic;
         
@@ -56,7 +66,13 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         
         setVisible(true);
     }
-    
+    /**
+     * Menü pontok kiakalíkátsa. <br>
+     * Új játék menüpont alatt 3 további lehetőség, ezekből választva a játék nehézségi szintje állítható, melyek a következők:<br>
+     * Könnyű - 10x10-es játékmező, 10 darab bombával<br>
+     * Közepes - 15x15-es játékmező, 50 darab bombával<br>
+     * Nehéz - 20x20-as játékmező, 100 darab bombával
+     */
     private JMenuBar menu() {
         menu = new JMenuBar();
         
@@ -78,12 +94,17 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         JMenu help = new JMenu("Segítség");
         
         menu.add(newgame);
-        menu.add(highscores);
-        menu.add(help);
+        //menu.add(highscores);
+        //menu.add(help);
         
         return menu;
     }
-    
+    /**
+     * Ezen a felületen tároljuk a játékhoz szükséges funkciókat.
+     * A MinesLeft label-ön a játékos által még nem megjelölt bombákat jelezzük.
+     * Restart gomb segítségével újra indítható a játék ugyanazon a nehézségi fokozaton
+     * A Time label-ön pedig az eltelt időt számoljuk, másodpercben számolva.  
+     */
     private JPanel InfoPanel()
     {
         JPanel infopanel = new JPanel(new FlowLayout(FlowLayout.CENTER,50,0));
@@ -108,7 +129,10 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         
         return infopanel;
     }
-    
+    /**
+     * A játékmező kialakítása
+     * @see minesweeper.view.GameField
+     */
     private JPanel GamePanel()
     {
         JPanel gamepanel = new JPanel(new GridLayout());
@@ -116,34 +140,52 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         
         return gamepanel;
     }
-    
+    /**
+     * Beállítja a bomba számlálót
+     * @param MineNumber A játék nehézségéhez tartozó bomba szám
+     */
     private void InitMinesLeft (int MineNumber) {
         this.MinesLeft.setText(Integer.toString(MineNumber));
     }
-    
-    void MinesLeftDecrease () {
+    /**
+     * A bombák számát csökkenti eggyel
+     */
+    private void MinesLeftDecrease () {
         int current = Integer.parseInt(this.MinesLeft.getText());
         this.MinesLeft.setText(Integer.toString(current-1));
     }
-    
-    void MinesLeftIncrease () {
+    /**
+     * A bombák számát növeli eggyel
+     */
+    private void MinesLeftIncrease () {
         int current = Integer.parseInt(this.MinesLeft.getText());
         this.MinesLeft.setText(Integer.toString(current+1));
     }
-    
+    /**
+     * A számláló elindítása
+     */
     private void TimerStart() {
         timer.start();        
     }
-    
+    /**
+     * A számláló leállítása
+     */
     private void TimerStop() {
         timer.stop();
     }
-    
+    /**
+     * A felhasználói felületen elhelyezett számláló frissítése másodpercenként
+     */
     private void UpdateTime(){
         int current = Integer.parseInt(this.Time.getText());
         this.Time.setText(Integer.toString(current+1));
     }
-    
+    /**
+     * Új játék esetén a nehézségnek megfelelően meghívjuk a logic és GameField játék inicializáló függvényeit.
+     * @param x Sorok száma
+     * @param y Oszlopok száma
+     * @param c Bombák száma
+     */
     public void newGame(int x,int y,int c){
         this.x = x; this.y = y; this.c = c;
         logic.startGame(x,y,c);
