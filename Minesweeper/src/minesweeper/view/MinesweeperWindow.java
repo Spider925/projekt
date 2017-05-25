@@ -49,7 +49,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         setLayout(new BorderLayout());
         add(InfoPanel(), BorderLayout.NORTH);
         this.x = 1; this.y = 0; this.c = 0;
-        gamefield = new GameField(1,0);
+        gamefield = new GameField(this,logic,1,0);
         add(gamefield, BorderLayout.CENTER);
         
         timer = new Timer(1000,this);
@@ -121,12 +121,12 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         this.MinesLeft.setText(Integer.toString(MineNumber));
     }
     
-    private void MinesLeftDecrease () {
+    void MinesLeftDecrease () {
         int current = Integer.parseInt(this.MinesLeft.getText());
         this.MinesLeft.setText(Integer.toString(current-1));
     }
     
-    private void MinesLeftIncrease () {
+    void MinesLeftIncrease () {
         int current = Integer.parseInt(this.MinesLeft.getText());
         this.MinesLeft.setText(Integer.toString(current+1));
     }

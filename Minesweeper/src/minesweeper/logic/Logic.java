@@ -19,11 +19,12 @@ public class Logic {
         String result;
         
         if( table.getField(a,b).isMine() ) result = "-1";
-        else if( checkWin() ) result = "won";
         else{
             result = Integer.toString(getMinesCountAround(a,b));
             table.getField(a, b).click();
         }
+        
+        if( checkWin() ) result = "won";
         
         return result;
     }
@@ -37,7 +38,7 @@ public class Logic {
             int k = 0;
             
             while( !isBomb && k<table.getBombsNum() ){
-                isBomb = table.getField(i,j).isMine();
+                isBomb = table.getField(i,j).isClicked();
                 k++;
             }
             
@@ -50,8 +51,8 @@ public class Logic {
     private int getMinesCountAround(int a,int b){
         int c = 0;
         
-        for(int i=a-1;i<=a+1;i++) for(int j=b-1;j<=+1;j++){
-            if( i == a && j == b ) continue;
+        for(int i=a-1;i<=a+1;i++) for(int j=b-1;j<=b+1;j++){
+            if( (i<0 || j<0 || i >= table.getSize().x || j >= table.getSize().y ) || ( i == a && j == b) ) continue;
             
             if( table.getField(i,j).isMine() ) c++;
         }
