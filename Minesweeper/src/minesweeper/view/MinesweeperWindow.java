@@ -45,6 +45,7 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         // Panel és megjelenítés
         setLayout(new BorderLayout());
         add(InfoPanel(), BorderLayout.NORTH);
+        this.x = 1; this.y = 0; this.c = 0;
         gamefield = new GameField(1,0);
         add(gamefield, BorderLayout.CENTER);
         
@@ -58,9 +59,9 @@ public class MinesweeperWindow extends JFrame implements ActionListener{
         
         JMenu newgame = new JMenu("Új Játék");
         
-        easy = new JMenuItem("Könnyű");
-        normal = new JMenuItem("Közepes");
-        hard = new JMenuItem("Nehéz");
+        easy = new JMenuItem("Könnyű"); //10 10 10
+        normal = new JMenuItem("Közepes"); //15 15 50
+        hard = new JMenuItem("Nehéz"); //20 20 100
         
         easy.addActionListener(this);
         normal.addActionListener(this);
